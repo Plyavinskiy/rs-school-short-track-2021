@@ -18,15 +18,18 @@
  */
 
 function removeKFromList(l, k) {
-  const arr = [];
+  let tempList = l;
 
-  for (let i = 0; i < l.length; i++) {
-    if (l[i] !== k) {
-      arr.push(l[i]);
+  while (tempList) {
+    if (tempList.value === k) {
+      tempList.value = tempList.next.value;
+      tempList.next = tempList.next.next;
+    } else {
+      tempList = tempList.next;
     }
   }
 
-  return arr;
+  return l;
 }
 
 module.exports = removeKFromList;
